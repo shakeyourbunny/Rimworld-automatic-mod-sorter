@@ -1,3 +1,40 @@
+Changes in the fork (shakeyourbunny)
+====================================
+
+ - moved mod database file to extra repository (see https://github.com/shakeyourbunny/Rimworld-automatic-mod-sorter-database)
+ - re-added two batch files for easy starting which do not exist anymore (see below).
+
+ - minor cleanup  files (dont commit python cache files...)
+ - some whitespace cleanup
+ - set version to 0.43.1 (instead of 0.43)
+
+Re-added following batch files (you still need a working python installation in your path, though):
+- rwmodsort.bat -> start the mod sorter
+- rwmodsort_template_update.bat -> start the database updater and add missing mods (description see bottom
+  of the page).
+
+I am aware that the original author is currently writing (March 2019) a major rewrite to address the reason for forking
+(database update). Currently I am undecided to upstream my database (alongside the list of contributors) once the rewrite
+is working good enough or rewrite the project myself (like linux compatibility etc).
+
+If I will do my own rewrite, some things to update / change:
+ - linux compatibilty
+ - online update / upload support
+ - more meaningful description
+ - keep mod weights in line with the original script.
+ - sync down additions to the original scripts' database. 
+
+NB: after some essential code cleanup (too many too list), I decided to grow the fork in a full fledged 
+    mod sorter with all the (command-line) bells and whistles; expect major changes from now on.
+
+Have fun using it!
+
+If you wish to contact me, please open an issue, send me an email or contact me on Steam.
+
+-- shakeyourbunny.
+
+--- Original notes here ---
+
 HOW-TO-USE
 ========
 

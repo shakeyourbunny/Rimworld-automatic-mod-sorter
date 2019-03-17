@@ -1,6 +1,5 @@
 import downloader
 import finder
-import mod_sorter
 import Parser
 import sorter
 from time import sleep
@@ -122,21 +121,3 @@ toolbox.DB_save(MOD_DB)
 
 print('Work done!')
 print('exit program...')
-
-
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-

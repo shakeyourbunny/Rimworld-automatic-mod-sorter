@@ -14,6 +14,9 @@ import finder
 import Parser
 import sorter
 
+from urllib.request import urlopen
+import json
+
 Version = 0.43 #unstable
 
 init(autoreset=True)
@@ -32,7 +35,7 @@ else:
 
     breakloop = False
     while breakloop == False:
-        x = input('input >> ')        
+        x = input('input >> ')
         if x == '1':
             breakloop = True
             cfolder = finder.finder_folder()
@@ -44,14 +47,36 @@ else:
             print('wrong input. Please input 1 or 2')
 
 
-        
 #DB 받아오기
-MOD_DB = dict()
-downloader.download_DB(MOD_DB, Version)
-#print(MOD_DB)
+#MOD_DB = dict()
+#downloader.download_DB(MOD_DB, Version)
+
+DB_url = 'https://raw.githubusercontent.com/shakeyourbunny/Rimworld-automatic-mod-sorter-database/master/db_template.json'
+#DB_url = 'https://raw.githubusercontent.com/zzzz465/Rimworld-automatic-mod-sorter/master/db_template.json'
+
+# fetch newest database file
+with urlopen(DB_url) as jsonurl:
+    dbrawdata = jsonurl.read()
+with open('db_template.json', 'wb') as dbfile:
+    dbfile.write(dbrawdata)
+
+# redundant, but keep it; rereading data from file
+with open('db_template.json', 'r', encoding='UTF-8') as dbfile:
+    MOD_DB = json.loads(dbfile.read())
+    #MOD_DB.update(json.loads(f.read()))
+
+# version check or such, disabled.
+#    if Ver < DB['Version'] :
+#        print('New version detected. please download newer version in github!')
+#        print('\n Program will be closed in 5 seconds...')
+#        sleep(3)
+#        sys.exit(0)
 
 print('Number of Mods registered in DB : ' + Color.LIGHTCYAN_EX + '{}'.format(len(MOD_DB)))
 print('Last DB updated date : ' + Color.LIGHTGREEN_EX + '{}'.format(MOD_DB['time']))
+
+#print(MOD_DB)
+#sys.exit(0)
 
 sleep(1)
 
@@ -149,6 +174,3 @@ print('\n\n')
 print('program will be closed in 5 seconds...')
 sleep(5)
 sys.exit(0)
-
-
-
